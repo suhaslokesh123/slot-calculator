@@ -1,66 +1,89 @@
-<!-- 
-Online HTML, CSS and JavaScript editor to run code online.
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
   <title>Earnings Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      width: 200px;
+      padding: 5px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    #output {
+      margin-top: 20px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  </style>
 </head>
 
 <body>
-   <p>Enter the number of 430 rupees slots</p>
-  <input type="number" id="430" value="0"><br>
+  <h2>Earnings Calculator</h2>
+
+  <p>Enter the number of 430 rupees slots</p>
+  <input type="number" id="430" value="0" min="0"><br>
 
   <p>Enter the number of 400 rupees slots</p>
-  <input type="number" id="400" value="0"><br>
+  <input type="number" id="400" value="0" min="0"><br>
 
   <p>Enter the number of 380 rupees slots</p>
-  <input type="number" id="380" value="0"><br>
+  <input type="number" id="380" value="0" min="0"><br>
 
   <p>Enter the number of orders of 2hr slot</p>
-  <input type="number" id="ord"><br>
+  <input type="number" id="ord" value="0" min="0"><br>
 
   <p>Enter the number of 2hr slots</p>
-  <input type="number" id="slot"><br>
+  <input type="number" id="slot" value="0" min="0"><br>
 
   <button id="submit">Submit</button>
 
-  <!-- Output container (starts empty) -->
+  <!-- Output container -->
   <div id="output"></div>
 
   <script>
     document.getElementById("submit").addEventListener("click", () => {
-  const val430 = Number(document.getElementById("430").value) || 0;
-  const val400 = Number(document.getElementById("400").value) || 0;
-  const val380 = Number(document.getElementById("380").value) || 0;
- const ordInput = document.getElementById("ord").value;
-  const slotInput = document.getElementById("slot").value;
+      const val430 = Number(document.getElementById("430").value) || 0;
+      const val400 = Number(document.getElementById("400").value) || 0;
+      const val380 = Number(document.getElementById("380").value) || 0;
+      const ordInput = document.getElementById("ord").value;
+      const slotInput = document.getElementById("slot").value;
 
-  // Validate that both orders and slots are NOT empty
-  if (ordInput === "" || slotInput === "") {
-    alert("Please fill in both Orders and Slots fields.");
-    return; // stop execution
-  }
+      // Validate that both orders and slots are filled
+      if (ordInput === "" || slotInput === "") {
+        alert("Please fill in both Orders and Slots fields.");
+        return;
+      }
 
-  const orders = Number(ordInput);
-  const slots = Number(slotInput);
-  // Corrected calculation
-  const total = val430 * 430 + val400 * 400 + val380 * 380 + orders * 10 + slots * 210;
+      const orders = Number(ordInput);
+      const slots = Number(slotInput);
 
-  const tax= total*0.02;
-  const res=total-tax;
-  document.getElementById("output").innerHTML = `
-  <p><strong>Total Earnings before deduction :</strong> ₹${total}</p>
-  <br>
-  <p><strong>Total Earnings after deduction :</strong> ₹${res}</p>
-`;
+      // Calculation
+      const total = val430 * 430 + val400 * 400 + val380 * 380 + orders * 10 + slots * 210;
+      const tax = total * 0.02;
+      const res = total - tax;
 
-});
-
+      // Display result
+      document.getElementById("output").innerHTML = `
+        <p><strong>Total Earnings before deduction:</strong> ₹${total.toFixed(2)}</p>
+        <p><strong>Total Earnings after 2% deduction:</strong> ₹${res.toFixed(2)}</p>
+      `;
+    });
   </script>
 </body>
 
