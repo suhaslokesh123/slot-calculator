@@ -1,0 +1,62 @@
+<!-- 
+Online HTML, CSS and JavaScript editor to run code online.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Browser</title>
+</head>
+
+<body>
+   <p>Enter the number of 430 rupees slots</p>
+  <input type="number" id="430" value="0"><br>
+
+  <p>Enter the number of 400 rupees slots</p>
+  <input type="number" id="400" value="0"><br>
+
+  <p>Enter the number of 380 rupees slots</p>
+  <input type="number" id="380" value="0"><br>
+
+  <p>Enter the number of orders of 2hr slot</p>
+  <input type="number" id="ord"><br>
+
+  <p>Enter the number of 2hr slots</p>
+  <input type="number" id="slot"><br>
+
+  <button id="submit">Submit</button>
+
+  <!-- Output container (starts empty) -->
+  <div id="output"></div>
+
+  <script>
+    document.getElementById("submit").addEventListener("click", () => {
+  const val430 = Number(document.getElementById("430").value) || 0;
+  const val400 = Number(document.getElementById("400").value) || 0;
+  const val380 = Number(document.getElementById("380").value) || 0;
+ const ordInput = document.getElementById("ord").value;
+  const slotInput = document.getElementById("slot").value;
+
+  // Validate that both orders and slots are NOT empty
+  if (ordInput === "" || slotInput === "") {
+    alert("Please fill in both Orders and Slots fields.");
+    return; // stop execution
+  }
+
+  const orders = Number(ordInput);
+  const slots = Number(slotInput);
+  // Corrected calculation
+  const total = val430 * 430 + val400 * 400 + val380 * 380 + orders * 10 + slots * 210;
+
+  document.getElementById("output").innerHTML = `
+    <p><strong>Total Earnings:</strong> ₹${total}</p>
+  `;
+});
+
+  </script>
+</body>
+
+</html>
