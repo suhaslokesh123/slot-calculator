@@ -53,10 +53,12 @@ Online HTML, CSS and JavaScript editor to run code online.
 
   const tax= total*0.02;
   const res=total-tax;
-  document.getElementById("output").innerHTML = '
-    <p><strong>Total Earnings before deduction :</strong> ₹${total}</p>
+  document.getElementById("output").innerHTML = `
+  <p><strong>Total Earnings before deduction :</strong> ₹${total}</p>
   <br>
-  <p><strong>Total Earnings after deduction :</strong> ₹${res}</p>`;
+  <p><strong>Total Earnings after deduction :</strong> ₹${res}</p>
+`;
+
 });
 
   </script>
