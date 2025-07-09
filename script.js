@@ -15,8 +15,12 @@ document.getElementById("submit").addEventListener("click", () => {
   const slots = Number(slotInput);
   // Corrected calculation
   const total = val430 * 430 + val400 * 400 + val380 * 380 + orders * 10 + slots * 210;
-
+  const tax= total*0.02;
+  const res=total-tax;
   document.getElementById("output").innerHTML = `
     <p><strong>Total Earnings:</strong> ₹${total}</p>
   `;
-});
+    <p><strong>Total Earnings before deduction :</strong> ₹${total}</p>
+  <br>
+  <p><strong>Total Earnings after deduction :</strong> ₹${res}</p>`;
+  });
